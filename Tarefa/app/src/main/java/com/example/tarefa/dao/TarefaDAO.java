@@ -1,6 +1,6 @@
 package com.example.tarefa.dao;
 
-import com.example.tarefa.Tarefa;
+import com.example.tarefa.model.Tarefa;
 
 import java.util.ArrayList;
 import java.util.List;

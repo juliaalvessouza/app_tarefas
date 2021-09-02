@@ -1,0 +1,65 @@
+package com.example.tarefa;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+import com.example.tarefa.model.Tarefa;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListaTarefaAdapter extends BaseAdapter {
+
+    private final List<Tarefa> tarefas = new ArrayList<>();
+    private final Context context;
+
+    public ListaTarefaAdapter(Context context) {
+        this.context = context;
+    }
+
+    @Override
+    public int getCount() {
+        return tarefas.size();
+    }
+
+    @Override
+    public Tarefa getItem(int position) {
+        return tarefas.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return tarefas.get(position).getId();
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View inflate = LayoutInflater.from(context)
+                .inflate(R.layout.card_tarefa, parent, false);
+        Tarefa tarefa = tarefas.get(position);
+        vincula(inflate, tarefa);
+        return inflate;
+    }
+
+    private void vincula(View inflate, Tarefa tarefa) {
+        TextView title = inflate.findViewById(R.id.title_card);
+        title.setText(tarefa.getTitle());
+        TextView description = inflate.findViewById(R.id.description_card);
+        description.setText(tarefa.getDescription());
+    }
+
+    public void atualiza(List<Tarefa> tarefas){
+        this.tarefas.clear();
+        this.tarefas.addAll(tarefas);
+        notifyDataSetChanged();
+    }
+
+    public void remove(Tarefa tarefa) {
+        tarefas.remove(tarefa);
+        notifyDataSetChanged();
+    }
+}

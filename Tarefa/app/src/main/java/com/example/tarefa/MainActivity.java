@@ -1,27 +1,30 @@
 package com.example.tarefa;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.tarefa.dao.TarefaDAO;
+import com.example.tarefa.model.Tarefa;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import static android.widget.AdapterView.*;
+import static android.widget.AdapterView.AdapterContextMenuInfo;
+import static android.widget.AdapterView.OnItemClickListener;
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String PUT_TAREFA = "tarefa";
     private TarefaDAO dao;
-    private ArrayAdapter<Tarefa> adapter;
+    private ListaTarefaAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +33,7 @@ public class MainActivity extends AppCompatActivity {
         dao = new TarefaDAO();
         btn_add_tarefa();
         configList();
-       for(int i = 0; i<10; i++){
-            dao.salva(new Tarefa("titulo" + i, "descrição" + i));
-        }
-
+        dao.salva(new Tarefa("Estudar" , "Até sexta" ));
     }
 
     @Override
@@ -49,25 +49,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onContextItemSelected(@NonNull MenuItem item) {
+    public boolean onContextItemSelected(@NonNull final MenuItem item) {
         if(item.getItemId() == R.id.menu_remove){
-            AdapterView.AdapterContextMenuInfo menuInfo = (AdapterContextMenuInfo) item.getMenuInfo();
-            Tarefa tarefaSelecionada = adapter.getItem(menuInfo.position);
-            remove(tarefaSelecionada);
+            new AlertDialog.Builder(this)
+                    .setTitle("Deletar Tarefa")
+                    .setMessage("Deseja deletar a tarefa? ")
+                    .setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            AdapterView.AdapterContextMenuInfo menuInfo = (AdapterContextMenuInfo) item.getMenuInfo();
+                            Tarefa tarefaSelecionada = adapter.getItem(menuInfo.position);
+                            remove(tarefaSelecionada);
+                        }
+                    })
+                    .setNegativeButton("NÃO", null)
+                    .show();
         }
 
         return super.onContextItemSelected(item);
     }
 
     private void atualizaList() {
-        adapter.clear();
-        adapter.addAll(dao.todos());
+        adapter.atualiza(dao.todos());
     }
 
     private void configList() {
         ListView list = findViewById(R.id.listview);
-        adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1);
+        adapter = new ListaTarefaAdapter(this);
         list.setAdapter(adapter);
         cliqueList(list);
         registerForContextMenu(list);

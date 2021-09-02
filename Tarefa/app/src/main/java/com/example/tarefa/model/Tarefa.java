@@ -1,4 +1,4 @@
-package com.example.tarefa;
+package com.example.tarefa.model;
 
 import java.io.Serializable;
 
@@ -43,7 +43,7 @@ public class Tarefa implements Serializable {
 
     @Override
     public String toString() {
-        return title;
+        return title + description;
     }
 
     public boolean idValido() {
