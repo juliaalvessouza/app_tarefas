@@ -1,4 +1,4 @@
-package com.example.tarefa;
+package com.example.tarefa.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,10 +9,12 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.tarefa.dao.TarefaDAO;
+import com.example.tarefa.R;
+import com.example.tarefa.bd.TarefaBD;
+import com.example.tarefa.bd.dao.TarefaDAO;
 import com.example.tarefa.model.Tarefa;
 
-import static com.example.tarefa.MainActivity.PUT_TAREFA;
+import static com.example.tarefa.ui.MainActivity.PUT_TAREFA;
 
 public class AddTarefaActivity extends AppCompatActivity {
 
@@ -26,7 +28,7 @@ public class AddTarefaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_tarefa);
-        dao = new TarefaDAO();
+        dao = TarefaBD.getInstance(this).getTarefaDAO();
         componentsView();
         dadosTarefa();
     }

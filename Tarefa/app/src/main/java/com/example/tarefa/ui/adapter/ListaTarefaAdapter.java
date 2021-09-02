@@ -1,4 +1,4 @@
-package com.example.tarefa;
+package com.example.tarefa.ui.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.tarefa.R;
 import com.example.tarefa.model.Tarefa;
 
 import java.util.ArrayList;

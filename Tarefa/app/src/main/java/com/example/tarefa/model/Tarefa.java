@@ -1,20 +1,27 @@
 package com.example.tarefa.model;
 
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 
+@Entity
 public class Tarefa implements Serializable {
 
-    private int id = 0;
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     private  String title;
     private  String description;
 
+    public Tarefa() {
+
+    }
+
+    @Ignore
     public Tarefa(String title, String description) {
         this.title = title;
         this.description = description;
-    }
-
-    public Tarefa() {
-
     }
 
     public int getId() {
@@ -41,10 +48,10 @@ public class Tarefa implements Serializable {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return title + description;
-    }
+//    @Override
+//    public String toString() {
+//        return title + description;
+//    }
 
     public boolean idValido() {
         return id > 0;

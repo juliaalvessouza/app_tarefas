@@ -1,4 +1,4 @@
-package com.example.tarefa;
+package com.example.tarefa.ui;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -13,7 +13,10 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.tarefa.dao.TarefaDAO;
+import com.example.tarefa.ui.adapter.ListaTarefaAdapter;
+import com.example.tarefa.R;
+import com.example.tarefa.bd.TarefaBD;
+import com.example.tarefa.bd.dao.TarefaDAO;
 import com.example.tarefa.model.Tarefa;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -30,10 +33,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        dao = new TarefaDAO();
         btn_add_tarefa();
         configList();
-        dao.salva(new Tarefa("Estudar" , "Até sexta" ));
+        dao = TarefaBD.getInstance(this).getTarefaDAO();
     }
 
     @Override
