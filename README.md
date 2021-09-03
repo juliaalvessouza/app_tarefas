@@ -7,5 +7,5 @@ O presente projeto teve como objetivo praticar o uso das seguintes tecnologias:
  * Android Studio;
  * Linguagem Java;
  * Persistência dos dados;
- * Requisições asincrônas;
+ * Requisições asíncronas;
  
