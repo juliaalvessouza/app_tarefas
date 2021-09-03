@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -16,7 +14,7 @@
             android:layout_width="317dp"
             android:layout_height="25dp"
             android:layout_margin="4dp"
-            android:text="Título"
+            android:text="@string/card_tarefa_titulo"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -25,7 +23,7 @@
             android:id="@+id/data_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="20/02/20"
+            android:text="@string/card_tarefa_data"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -35,10 +33,8 @@
         android:id="@+id/description_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Descrição"
+        android:text="@string/card_tarefa_descricao"
         android:layout_marginLeft="4dp"
         android:textColor="@color/black"
         android:textSize="18sp"/>
-
-
 </LinearLayout>

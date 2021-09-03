@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Tarefa</string>
+    <string name="activity_add_tarefa_titulo">Título</string>
+    <string name="activity_add_tarefa_descricao">Descrição</string>
+    <string name="card_tarefa_titulo">Título</string>
+    <string name="card_tarefa_data">20/02/20</string>
+    <string name="card_tarefa_descricao">Descrição</string>
+    <string name="menu_remover">Remover</string>
+    <string name="menu_salvar">Salvar</string>
 </resources>

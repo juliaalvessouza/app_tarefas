@@ -1,5 +1,7 @@
 package com.example.tarefa.model;
 
+import android.annotation.SuppressLint;
+
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
@@ -60,6 +62,7 @@ public class Tarefa implements Serializable {
     }
 
     public String formatData(){
+        @SuppressLint("SimpleDateFormat")
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yy");
         return simpleDateFormat.format(data.getTime());
     }

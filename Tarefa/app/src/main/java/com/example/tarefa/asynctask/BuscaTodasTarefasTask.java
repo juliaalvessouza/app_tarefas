@@ -8,10 +8,10 @@ import com.example.tarefa.ui.adapter.ListaTarefaAdapter;
 
 import java.util.List;
 
-public class BuscaTodasTarefasTask extends AsyncTask {
+public class BuscaTodasTarefasTask extends AsyncTask<Void, Void, List<Tarefa>>{
 
-    private TarefaDAO dao;
-    private ListaTarefaAdapter adapter;
+    private final TarefaDAO dao;
+    private final ListaTarefaAdapter adapter;
 
     public BuscaTodasTarefasTask(TarefaDAO dao, ListaTarefaAdapter adapter){
         this.dao = dao;
@@ -19,14 +19,14 @@ public class BuscaTodasTarefasTask extends AsyncTask {
     }
 
     @Override
-    protected Object doInBackground(Object[] objects) {
+    protected List<Tarefa> doInBackground(Void[] objects) {
         List<Tarefa> tarefas = dao.todos();
         return tarefas;
     }
 
     @Override
-    protected void onPostExecute(Object tarefas) {
+    protected void onPostExecute( List<Tarefa> tarefas) {
         super.onPostExecute(tarefas);
-        adapter.atualiza((List<Tarefa>) tarefas);
+        adapter.atualiza(tarefas);
     }
 }

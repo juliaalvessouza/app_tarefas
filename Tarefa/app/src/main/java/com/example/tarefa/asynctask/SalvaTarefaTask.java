@@ -7,8 +7,8 @@ import com.example.tarefa.model.Tarefa;
 
 public class SalvaTarefaTask extends AsyncTask {
 
-    private TarefaDAO dao;
-    private Tarefa tarefa;
+    private final TarefaDAO dao;
+    private final Tarefa tarefa;
 
     public SalvaTarefaTask(TarefaDAO dao, Tarefa tarefa) {
         this.dao = dao;

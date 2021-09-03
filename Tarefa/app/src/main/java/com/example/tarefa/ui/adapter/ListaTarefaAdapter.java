@@ -1,5 +1,6 @@
 package com.example.tarefa.ui.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +40,7 @@ public class ListaTarefaAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        @SuppressLint("ViewHolder")
         View inflate = LayoutInflater.from(context)
                 .inflate(R.layout.card_tarefa, parent, false);
         Tarefa tarefa = tarefas.get(position);
