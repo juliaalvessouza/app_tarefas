@@ -13,6 +13,8 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.tarefa.asynctask.BuscaTodasTarefasTask;
+import com.example.tarefa.asynctask.DeletaTarefaTask;
 import com.example.tarefa.ui.adapter.ListaTarefaAdapter;
 import com.example.tarefa.R;
 import com.example.tarefa.bd.TarefaBD;
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void atualizaList() {
-        adapter.atualiza(dao.todos());
+        new BuscaTodasTarefasTask(dao, adapter).execute();
     }
 
     private void configList() {
@@ -86,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void remove(Tarefa tarefa) {
-        dao.remove(tarefa);
+        new DeletaTarefaTask(dao, tarefa).execute();
         adapter.remove(tarefa);
     }
 

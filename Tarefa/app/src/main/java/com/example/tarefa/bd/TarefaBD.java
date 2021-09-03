@@ -21,7 +21,6 @@ public abstract class TarefaBD extends RoomDatabase {
 
     public static TarefaBD getInstance(Context context){
         return Room.databaseBuilder(context, TarefaBD.class, NOME_BD)
-                .allowMainThreadQueries()
                 .build();
     }
 }

@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tarefa.R;
+import com.example.tarefa.asynctask.EditaTarefaTask;
+import com.example.tarefa.asynctask.SalvaTarefaTask;
 import com.example.tarefa.bd.TarefaBD;
 import com.example.tarefa.bd.dao.TarefaDAO;
 import com.example.tarefa.model.Tarefa;
@@ -67,9 +69,9 @@ public class AddTarefaActivity extends AppCompatActivity {
     private void finalizaFormulario() {
         getTarefa();
         if(tarefa.idValido()){
-            dao.edita(tarefa);
+           new EditaTarefaTask(dao, tarefa).execute();
         }else {
-            dao.salva(tarefa);
+            new SalvaTarefaTask(dao, tarefa).execute();
         }
         finish();
     }
