@@ -42,15 +42,17 @@ public class ListaTarefaAdapter extends BaseAdapter {
         View inflate = LayoutInflater.from(context)
                 .inflate(R.layout.card_tarefa, parent, false);
         Tarefa tarefa = tarefas.get(position);
-        vincula(inflate, tarefa);
+        setDados(inflate, tarefa);
         return inflate;
     }
 
-    private void vincula(View inflate, Tarefa tarefa) {
+    private void setDados(View inflate, Tarefa tarefa) {
         TextView title = inflate.findViewById(R.id.title_card);
-        title.setText(tarefa.getTitle());
+        title.setText(tarefa.getTitulo());
         TextView description = inflate.findViewById(R.id.description_card);
-        description.setText(tarefa.getDescription());
+        description.setText(tarefa.getDescricao());
+        TextView data = inflate.findViewById(R.id.data_card);
+        data.setText(tarefa.formatData());
     }
 
     public void atualiza(List<Tarefa> tarefas){

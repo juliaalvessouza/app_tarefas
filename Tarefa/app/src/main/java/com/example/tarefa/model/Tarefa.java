@@ -5,14 +5,17 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 @Entity
 public class Tarefa implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
-    private  String title;
-    private  String description;
+    private String titulo;
+    private String descricao;
+    private Calendar data = Calendar.getInstance();
 
     public Tarefa() {
 
@@ -20,8 +23,8 @@ public class Tarefa implements Serializable {
 
     @Ignore
     public Tarefa(String title, String description) {
-        this.title = title;
-        this.description = description;
+        this.titulo = title;
+        this.descricao = description;
     }
 
     public int getId() {
@@ -32,28 +35,33 @@ public class Tarefa implements Serializable {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-//    @Override
-//    public String toString() {
-//        return title + description;
-//    }
+    public Calendar getData() { return data; }
+
+    public void setData(Calendar data) { this.data = data; }
 
     public boolean idValido() {
         return id > 0;
     }
+
+    public String formatData(){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yy");
+        return simpleDateFormat.format(data.getTime());
+    }
 }
+

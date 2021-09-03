@@ -26,6 +26,8 @@ import static android.widget.AdapterView.OnItemClickListener;
 public class MainActivity extends AppCompatActivity {
 
     public static final String PUT_TAREFA = "tarefa";
+    public static final String TITULO_DIALOG = "Deletar Tarefa";
+    public static final String MENSAGEM_DIALOG = "Deseja deletar a tarefa?";
     private TarefaDAO dao;
     private ListaTarefaAdapter adapter;
 
@@ -54,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onContextItemSelected(@NonNull final MenuItem item) {
         if(item.getItemId() == R.id.menu_remove){
             new AlertDialog.Builder(this)
-                    .setTitle("Deletar Tarefa")
-                    .setMessage("Deseja deletar a tarefa? ")
+                    .setTitle(TITULO_DIALOG)
+                    .setMessage(MENSAGEM_DIALOG)
                     .setPositiveButton("SIM", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {

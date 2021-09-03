@@ -18,8 +18,8 @@ import static com.example.tarefa.ui.MainActivity.PUT_TAREFA;
 
 public class AddTarefaActivity extends AppCompatActivity {
 
-    private static final String TITLE_TOOLBAR = "Adicionar Tarefa";
-    private static final String TITLE_TOOLBAR_EDITA = "Edita Aluno";
+    private static final String TITULO_TOOLBAR = "Adicionar Tarefa";
+    private static final String TITULO_TOOLBAR_EDITA = "Editar Tarefa";
     private EditText field_title, field_description;
     private TarefaDAO dao;
     private Tarefa tarefa;
@@ -50,18 +50,18 @@ public class AddTarefaActivity extends AppCompatActivity {
     private void dadosTarefa() {
         Intent dados = getIntent();
         if(dados.hasExtra(PUT_TAREFA)){
-            setTitle(TITLE_TOOLBAR_EDITA);
+            setTitle(TITULO_TOOLBAR_EDITA);
             tarefa = (Tarefa) dados.getSerializableExtra(PUT_TAREFA);
             preencheCampos();
         }else{
-            setTitle(TITLE_TOOLBAR);
+            setTitle(TITULO_TOOLBAR);
             tarefa = new Tarefa();
         }
     }
 
     private void preencheCampos() {
-        field_title.setText(tarefa.getTitle());
-        field_description.setText(tarefa.getDescription());
+        field_title.setText(tarefa.getTitulo());
+        field_description.setText(tarefa.getDescricao());
     }
 
     private void finalizaFormulario() {
@@ -77,8 +77,8 @@ public class AddTarefaActivity extends AppCompatActivity {
     private void getTarefa() {
         String title = field_title.getText().toString();
         String description = field_description.getText().toString();
-        tarefa.setTitle(title);
-        tarefa.setDescription(description);
+        tarefa.setTitulo(title);
+        tarefa.setDescricao(description);
     }
 
     private void componentsView() {
