@@ -1,5 +1,3 @@
-# app_tarefas
-
 <h1>Aplicativo Tarefa!</h1> 
 
 <h2>Aplicativo para organizações das tarefas.</h2>
